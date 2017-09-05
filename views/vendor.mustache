@@ -20,9 +20,24 @@
   <br>
   <p>discription:</p>
   <input type="text" name="discription" value="">
-  <hr>
+  <br>
   <input type="submit" name="" value="Add Item">
 </form>
+<hr>
+<hr>
+
+<h4>Machine Items</h4>
+
+{{#snack}}
+<div class="machineContainer">
+
+  <p>{{name}}, {{quantity}}</p>
+  <p>{{cost}}</p>
+  <p>{{discription}}</p>
+
+</div>
+<hr>
+{{/snack}}
 
   </body>
 </html>

@@ -33,7 +33,9 @@ app.get('/', function(req, res) {
 })
 
 app.get('/vendor', function(req, res) {
-  res.render("vendor")
+  models.VMachine.findAll().then(function(snack){
+    res.render('vendor', {snack: snack})
+  })
 })
 
 app.get('/machine', function(req, res) {
@@ -54,9 +56,11 @@ app.post('/addItem', function(req, res) {
     discription: discriptionV
   })
   vmachine.save().then(function () {
-    res.redirect('/machine')
+    res.redirect('/vendor')
   })
 })
+
+
 
 
 
