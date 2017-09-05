@@ -39,11 +39,11 @@ app.get('/vendor', function(req, res) {
   })
 })
 
-app.get('/api/customer/items', function(req, res) {
-  models.VMachine.findAll().then(function(snack){
-    res.render('machine', {snack: snack})
-  })
-})
+// app.get('/api/customer/items', function(req, res) {
+//   models.VMachine.findAll().then(function(snack){
+//     res.render('machine', {snack: snack})
+//   })
+// })
 
 app.post('/addItem', function(req, res) {
   let nameV = req.body.name;
