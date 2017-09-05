@@ -32,9 +32,29 @@ app.get('/', function(req, res) {
   res.render("index");
 })
 
+app.get('/vendor', function(req, res) {
+  res.render("vendor")
+})
+
 app.get('/machine', function(req, res) {
-  models.VMachines.findAll().then(function(snack){
-    res.render('machone', {snack: snack})
+  models.VMachine.findAll().then(function(snack){
+    res.render('machine', {snack: snack})
+  })
+})
+
+app.post('/addItem', function(req, res) {
+  let nameV = req.body.name;
+  let costV = req.body.cost;
+  let quantityV = req.body.quantity;
+  let discriptionV = req.body.discription;
+  const vmachine = models.VMachine.build({
+    name: nameV,
+    cost: costV,
+    quantity: quantityV,
+    discription: discriptionV
+  })
+  vmachine.save().then(function () {
+    res.redirect('/machine')
   })
 })
 
