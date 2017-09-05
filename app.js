@@ -28,24 +28,22 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-// app.get('/', function(req, res) {
-//   res.render("index");
-// })
 
-app.get('/vendor', function(req, res) {
+
+
+// get a list of items
+app.get('/api/customer/items', function(req, res) {
   models.VMachine.findAll().then(function(snack){
     res.json(
       {"data": snack})
   })
 })
 
-// app.get('/api/customer/items', function(req, res) {
-//   models.VMachine.findAll().then(function(snack){
-//     res.render('machine', {snack: snack})
-//   })
-// })
 
-app.post('/addItem', function(req, res) {
+
+
+// add a new item not previously existing in the machine
+app.post('/api/vendor/items', function(req, res) {
   let nameV = req.body.name;
   let costV = req.body.cost;
   let quantityV = req.body.quantity;
@@ -60,6 +58,36 @@ app.post('/addItem', function(req, res) {
     res.json({"status":"success"});
   })
 })
+
+
+
+// purchase an item
+app.post('api/customer/items/:itemId/purchases', function(req, res) {
+
+})
+
+
+// get a list of all purchases with their item and date/time
+app.get('/api/vendor/purchases', function(req, res) {
+
+})
+
+
+
+
+// get a total amount of money accepted by the machine
+app.get('/api/vendor/money', function(req, res) {
+
+})
+
+
+// update item quantity, description, and cost
+app.put('/api/vendor/items/:itemId', function(req, res) {
+
+})
+
+
+
 
 
 
