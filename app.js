@@ -28,17 +28,18 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-app.get('/', function(req, res) {
-  res.render("index");
-})
+// app.get('/', function(req, res) {
+//   res.render("index");
+// })
 
 app.get('/vendor', function(req, res) {
   models.VMachine.findAll().then(function(snack){
-    res.render('vendor', {snack: snack})
+    res.json(
+      {"data": snack})
   })
 })
 
-app.get('/machine', function(req, res) {
+app.get('/api/customer/items', function(req, res) {
   models.VMachine.findAll().then(function(snack){
     res.render('machine', {snack: snack})
   })
@@ -56,7 +57,7 @@ app.post('/addItem', function(req, res) {
     discription: discriptionV
   })
   vmachine.save().then(function () {
-    res.redirect('/vendor')
+    res.json({"status":"success"});
   })
 })
 
