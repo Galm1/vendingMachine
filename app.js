@@ -43,7 +43,6 @@ app.get('/api/customer/items', function(req, res) {
 
 
 
-
 // add a new item not previously existing in the machine
 app.post('/api/vendor/items', function(req, res) {
   let nameV = req.body.name;
@@ -67,7 +66,26 @@ app.post('/api/vendor/items', function(req, res) {
 
 // purchase an item
 app.post('api/customer/items/:itemId/purchases', function(req, res) {
-  let amount = req.body.amount;
+  // let itemId = req.params.itemId;
+  // models.VMachine.findOne({
+  //   where: {
+  //     id: itemId
+  //   }
+  // }).then(function(results) {
+  //   models.VMachine.update({
+  //     quantity: req.body.quantity - 1
+  //   }).then(function(results) {
+  //     const purchased = new purchase({
+  //       name: results.name,
+  //       amountIn: req.body.amountIn
+  //     })
+  //     purchased.save().then(function() {
+  //       res.json({
+  //         'you are': 'successful'
+  //       })
+  //     })
+  //   })
+  // })
 })
 
 
@@ -98,13 +116,17 @@ app.put('/api/vendor/items/:itemId', function(req, res) {
       }
     })
     .then(function(snack) {
-      if(snack === 1){
+      if (snack === 1) {
+        res.json({
+          "data": "success"
+        })
+      }
       res.json({
-        "data": "success"
-      })} res.json({
         //why does this display when it is successful?
         "data": "error"
-})})})
+      })
+    })
+})
 
 
 
